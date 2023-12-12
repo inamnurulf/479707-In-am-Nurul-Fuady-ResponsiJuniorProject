@@ -82,7 +82,7 @@
             // 
             textBox1.Location = new Point(184, 120);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(146, 23);
+            textBox1.Size = new Size(180, 23);
             textBox1.TabIndex = 3;
             textBox1.TextChanged += textBox1_TextChanged;
             // 
@@ -92,7 +92,7 @@
             comboBox1.Items.AddRange(new object[] { "HR", "ENG", "DEV", "PM", "FIN" });
             comboBox1.Location = new Point(184, 158);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(146, 23);
+            comboBox1.Size = new Size(180, 23);
             comboBox1.TabIndex = 4;
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
@@ -108,7 +108,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(112, 199);
+            button1.Location = new Point(504, 199);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 6;
@@ -118,7 +118,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(302, 199);
+            button2.Location = new Point(585, 199);
             button2.Name = "button2";
             button2.Size = new Size(75, 23);
             button2.TabIndex = 7;
@@ -128,7 +128,7 @@
             // 
             // button3
             // 
-            button3.Location = new Point(497, 199);
+            button3.Location = new Point(666, 199);
             button3.Name = "button3";
             button3.Size = new Size(75, 23);
             button3.TabIndex = 8;
