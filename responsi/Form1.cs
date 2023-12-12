@@ -65,6 +65,7 @@ namespace responsi
 
         private void button1_Click(object sender, EventArgs e)
         {
+
             try
             {
 
@@ -94,7 +95,11 @@ namespace responsi
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            if (row == null)
+            {
+                MessageBox.Show("Dippencet dulu dong yang mana yang mau di edit", "WARNING!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             try
             {
 
@@ -117,11 +122,16 @@ namespace responsi
 
         private void button3_Click(object sender, EventArgs e)
         {
+            if (row == null)
+            {
+                MessageBox.Show("Dipencet dulu dong yang mana yang mau di delete", "WARNING!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             try
             {
 
                 conn.Open();
-                sql = "delete from karyawan where \"id_karyawan\" ='" + row.Cells["id_karyawan"].Value.ToString() + "'";
+                sql = "delete from \"karyawan\" where \"id_karyawan\" ='" + row.Cells["id_karyawan"].Value.ToString() + "'";
                 cmd = new NpgsqlCommand(sql, conn);
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Data user berhasil didelete", "nice", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -135,6 +145,11 @@ namespace responsi
                 conn.Close();
 
             }
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
 
         }
     }
