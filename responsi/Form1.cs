@@ -72,7 +72,7 @@ namespace responsi
                 sql = "INSERT INTO karyawan (nama,id_dep) values ('" + textBox1.Text + "','" + comboBox1.SelectedItem + "');";
                 cmd = new NpgsqlCommand(sql, conn);
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("Data user berhasil ditambahkan", "nice", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Data user berhasil ditambahkan", "nice", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 conn.Close();
                 RefreshData();
                 textBox1.Text = comboBox1.Text = null;
@@ -80,6 +80,7 @@ namespace responsi
             catch (Exception ex)
             {
                 MessageBox.Show("Error:" + ex.Message, "insert failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                conn.Close();
 
             }
         }
@@ -89,6 +90,52 @@ namespace responsi
             row = dataGridView1.Rows[e.RowIndex];
             textBox1.Text = row.Cells["nama"].Value.ToString();
             comboBox1.SelectedItem = row.Cells["id_dep"].Value.ToString();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+
+                conn.Open();
+                sql = "update karyawan set \"nama\" ='" + textBox1.Text + "',\"id_dep\"='" + comboBox1.SelectedItem + "' where \"id_karyawan\" ='" + row.Cells["id_karyawan"].Value.ToString() + "'";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Data user berhasil diupdate", "nice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                conn.Close();
+                RefreshData();
+                textBox1.Text = comboBox1.Text = null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:" + ex.Message, "update failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                conn.Close();
+
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                conn.Open();
+                sql = "delete from karyawan where \"id_karyawan\" ='" + row.Cells["id_karyawan"].Value.ToString() + "'";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Data user berhasil didelete", "nice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                conn.Close();
+                RefreshData();
+                textBox1.Text = comboBox1.Text = null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:" + ex.Message, "delete failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                conn.Close();
+
+            }
+
         }
     }
 }
